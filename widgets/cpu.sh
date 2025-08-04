@@ -4,7 +4,7 @@
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Size used for the icons is 24x24 (16x16 is also ok for a smaller panel)
-readonly ICON="${DIR}/icons/cpu.png"
+#readonly ICON="${DIR}/icons/cpu.png"
 
 # Available CPUs - threads are looked at as cores
 declare -r CPU_ARRAY=($(awk '/MHz/{print $4}' /proc/cpuinfo | cut -f1 -d"."))
@@ -40,7 +40,7 @@ else
   INFO="<txt>"
 fi
 INFO+="${STDOUT}"
-INFO+=" - $CPU_TEMP"°C"  "
+#INFO+=" - $CPU_TEMP"°C"  "
 INFO+="</txt>"
 
 # Output panel

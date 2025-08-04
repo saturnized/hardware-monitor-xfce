@@ -5,7 +5,7 @@
 readonly DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Size used for the icons is 24x24 (16x16 is also ok for a smaller panel)
-readonly ICON="${DIR}/icons/memory.png"
+#readonly ICON="${DIR}/icons/memory.png"
 
 # Calculate RAM values
 readonly TOTAL=$(free -b | awk '/^[Mm]em/{$2 = $2 / 1073741824; printf "%.2f", $2}')
@@ -33,19 +33,19 @@ if [[ $(file -b "${ICON}") =~ PNG|SVG ]]; then
 else
   INFO="<txt>"
 fi
-INFO+=" ${USED_PERCENT}  "
+INFO+=" ${USED_PERCENT}% - ${USED}/${TOTAL} GB"
 INFO+="</txt>"
 
 # Tooltip
 MORE_INFO="<tool>"
-MORE_INFO+="\t\t    RAM\n"
+MORE_INFO+="\t       RAM\n"
 MORE_INFO+="┌─ Used\t\t${USED} GB\n"
 MORE_INFO+="├─ Free\t\t${FREE} GB\n"
-MORE_INFO+="├─ Shared\t\t${SHARED} GB\n"
+MORE_INFO+="├─ Shared\t${SHARED} GB\n"
 MORE_INFO+="├─ Cache\t\t${CACHED} GB\n"
 MORE_INFO+="└─ Total\t\t${TOTAL} GB\n"
 MORE_INFO+="\n"
-MORE_INFO+="\t\t    SWAP\n"
+MORE_INFO+="\t      SWAP\n"
 MORE_INFO+="┌─ Used\t\t${SWP_USED} GB\n"
 MORE_INFO+="├─ Free\t\t${SWP_FREE} GB\n"
 MORE_INFO+="└─ Total\t\t${SWP_TOTAL} GB"
